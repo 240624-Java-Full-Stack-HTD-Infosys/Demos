@@ -1,14 +1,26 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class FlowControl {
+public class FlowControl {    
     public static void main(String[] args) {
+
+        /*
+        There are three important types of flow control:
+        branching - take different paths through the method
+        looping - repeat statements multiple times before continuing through the method
+        jumping - jump to another method, and when complete return to here
+         */
+
         int x = 3;
         int y = -1;
         String str = "A";
         System.out.println(x + y);
 
-        //branching
+        /*
+        branching
+         */
+
+        //if
         if(x > 0) {
             System.out.println("X is greater than 0");
         }
@@ -82,7 +94,49 @@ public class FlowControl {
 
 
         //Jump & Return - method invocation
+        otherMethod();
 
+        int aa = 4;
+        int bb = 7;
+        int result = sum(aa, bb);
+        System.out.println(result);
+
+        System.out.println(methodTwo(methodOne()));
+
+        System.out.println("========= pass by value test ===========");
+        int result2 = passByValueTest(aa);
+        System.out.println(aa + " - " + result2);
 
     }
+
+    public static void otherMethod() {
+        System.out.println("This is the other method.");
+    }
+
+    public static int sum(int a, int b) {
+        return a + b;
+    }
+
+    public static Object anotherMethod(float a, float b, Object c, int d) {
+        return new Object();
+    }
+
+    public static String methodTwo(String str) {
+        return str + " world!";
+    }
+
+    public static String methodOne() {
+        return "hello";
+    }
+
+    public static int passByValueTest(int a) {
+        a = 99;
+        return a;
+    }
+
+
+
+
+
+
 }
