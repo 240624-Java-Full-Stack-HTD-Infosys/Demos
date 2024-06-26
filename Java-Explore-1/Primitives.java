@@ -50,7 +50,7 @@ public class Primitives {
         //concatinate a and b to get ab
         //let there be a string with a value "ab"
 
-        StringBuilder sb = new StringBuilder();
+        StringBuffer sb = new StringBuffer();
         sb.append('a');
         sb.append('b');
         String myString = sb.toString();
