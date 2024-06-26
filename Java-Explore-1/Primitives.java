@@ -13,8 +13,10 @@ public class Primitives {
     char g = 'a'; //1100001
     boolean h = false;
 
+    //arrays aren't primitives themselves, but often will hold a number of primitives.
     int[] arr = new int[]{1,2,3};
 
+    //Wrapper classes, one for each primitive, can be autoboxed
     Integer aa = 97;
     Short bb = 32000;
     Long cc = 44l;
@@ -24,9 +26,13 @@ public class Primitives {
     Character gg = 'a';
     Boolean hh = true;
 
-
+    //Everything that isn't a primitive is a class/object, including the wrapper classes.
     Object o;
     Connection con;
+
+    //Strings are also objects, not primitives, but are about as ubiquitous as primitives are, and are
+    // treated in special ways, just like the wrappers.
+    String helloWorld = "Hello World!";
 
 
 
@@ -43,11 +49,11 @@ public class Primitives {
         String ss = s;
 
 
-        String abc = "a" + "b";
+        String ab = "a" + "b";
         //let there be a String called abc
         //let abc point to the string in the pool with a value of "a"
         //let there be a string with value "b"
-        //concatinate a and b to get ab
+        //concatenate a and b to get ab
         //let there be a string with a value "ab"
 
         StringBuffer sb = new StringBuffer();
