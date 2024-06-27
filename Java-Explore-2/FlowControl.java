@@ -1,11 +1,13 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class FlowControl {    
+public class FlowControl {
     public static void main(String[] args) {
 
         /*
-        There are three important types of flow control:
+        Programs execute instructions in order from beginning to end, or PEP to HALT. Flow control
+        refers to how we modify that simple execution plan to something more complex. There are three
+        important types of flow control:
         branching - take different paths through the method
         looping - repeat statements multiple times before continuing through the method
         jumping - jump to another method, and when complete return to here
@@ -132,6 +134,10 @@ public class FlowControl {
     public static int passByValueTest(int a) {
         a = 99;
         return a;
+    }
+
+    public static String ternaryOperatorTest(int a) {
+        return a % 2 == 0 ? "even" : "odd";
     }
 
 

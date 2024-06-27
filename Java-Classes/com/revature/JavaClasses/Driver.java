@@ -1,3 +1,5 @@
+package com.revature.JavaClasses;
+
 public class Driver {
     /*
     4 pillars of Object Oriented Programming
@@ -14,16 +16,23 @@ public class Driver {
         method overloading
         sub-type polymorphism
 
-
-
-
      */
 
 
 
-
-
     public static void main(String[] args) {
+        ClassA classA = new ClassA(1,2);
+        ClassB obj1 = new ClassB(4);
+        System.out.println(obj1.getStaticNum());
+        ClassB obj2 = new ClassB(-4);
+        obj2.setStaticNum(10);
+
+        System.out.println(obj1.getStaticNum());
+
+
+
+
+
 
     }
 
