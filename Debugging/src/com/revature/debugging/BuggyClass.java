@@ -24,6 +24,7 @@ public class BuggyClass {
         File file = new File("badFilename.txt");
         InputStreamReader reader = new InputStreamReader(new FileInputStream(file));
 
+        System.out.println("This never happens");
     }
 
     public void causeOneOfManyExceptions() {
@@ -67,6 +68,10 @@ public class BuggyClass {
 
     public void causeNumberFormatException() {
         Integer.parseInt("eleven");
+    }
+
+    public void causeCustomCheckedException() throws CustomCheckedException {
+        throw new CustomCheckedException("This is our custom checked exception!");
     }
 
 

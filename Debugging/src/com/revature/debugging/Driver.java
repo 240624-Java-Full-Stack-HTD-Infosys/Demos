@@ -1,6 +1,9 @@
 package com.revature.debugging;
 
 import java.io.FileNotFoundException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class Driver {
     public static void main(String[] args) throws FileNotFoundException {
@@ -9,10 +12,23 @@ public class Driver {
 
         //bug.causeCheckedException();
 
-        //bug.causeUncheckedExceptionAndPassTheBuck();
+        bug.causeUncheckedExceptionAndPassTheBuck();
 
-        bug.causeOneOfManyExceptions();
+        //bug.causeOneOfManyExceptions();
 
-        //bug.rng();
+        try(//try-with-resources
+                Connection conn = DriverManager.getConnection("");
+                Connection conn2 = DriverManager.getConnection("");
+                Connection conn3 = DriverManager.getConnection("");
+                ) {
+            bug.causeCustomCheckedException();
+        } catch (CustomCheckedException e) {
+            e.printStackTrace();
+        } catch(SQLException e) {
+            e.printStackTrace();
+        } finally {
+            System.out.println("This always happens.");
+        }
+
     }
 }
