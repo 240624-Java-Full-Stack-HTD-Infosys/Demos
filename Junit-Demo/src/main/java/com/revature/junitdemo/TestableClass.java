@@ -4,6 +4,7 @@ package com.revature.junitdemo;
 public class TestableClass {
     OtherClass externalResource;
 
+
     public TestableClass(OtherClass otherClass) {
         this.externalResource = otherClass;
     }
