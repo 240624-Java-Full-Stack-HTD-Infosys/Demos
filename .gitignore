@@ -1,0 +1,9 @@
+*.properties
+node_modules/
+*.jar
+*.war
+.idea/
+*.iml
+dist/
+out/
+target/

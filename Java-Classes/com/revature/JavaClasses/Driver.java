@@ -18,8 +18,6 @@ public class Driver {
 
      */
 
-
-
     public static void main(String[] args) {
         ClassA classA = new ClassA(1,2);
         ClassB obj1 = new ClassB(4);
@@ -28,6 +26,7 @@ public class Driver {
         obj2.setStaticNum(10);
 
         System.out.println(obj1.getStaticNum());
+
 
 
 
