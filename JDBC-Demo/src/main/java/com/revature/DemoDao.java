@@ -1,7 +1,9 @@
 package com.revature;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /*
@@ -67,12 +69,12 @@ public class DemoDao{
 
     }
 
-    public Set<DemoModel> readAll() throws SQLException {
-        String sql = "SELECT * FROM demo";
+    public List<DemoModel> readAll() throws SQLException {
+        String sql = "SELECT * FROM demo ORDER BY id ASC";
         PreparedStatement pstmt = connection.prepareStatement(sql);
         ResultSet results = pstmt.executeQuery();
 
-        Set<DemoModel> modelSet = new HashSet<DemoModel>();
+        List<DemoModel> modelSet = new ArrayList<DemoModel>();
 
         while(results.next()) {
             modelSet.add(new DemoModel(results.getInt("id"), results.getString("message")));
