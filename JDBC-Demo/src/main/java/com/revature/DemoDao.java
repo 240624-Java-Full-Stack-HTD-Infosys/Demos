@@ -1,6 +1,8 @@
 package com.revature;
 
 import java.sql.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /*
 The DAO design pattern is a pattern where our object, a DAO (Data Access Object) contains the CRUD functionality
@@ -63,6 +65,20 @@ public class DemoDao{
 
         pstmt.execute();
 
+    }
+
+    public Set<DemoModel> readAll() throws SQLException {
+        String sql = "SELECT * FROM demo";
+        PreparedStatement pstmt = connection.prepareStatement(sql);
+        ResultSet results = pstmt.executeQuery();
+
+        Set<DemoModel> modelSet = new HashSet<DemoModel>();
+
+        while(results.next()) {
+            modelSet.add(new DemoModel(results.getInt("id"), results.getString("message")));
+        }
+
+        return modelSet;
     }
 
 }

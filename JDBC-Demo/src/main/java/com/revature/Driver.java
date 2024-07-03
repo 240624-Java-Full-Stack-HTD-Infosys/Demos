@@ -25,7 +25,11 @@ public class Driver {
         model.setMessage("Goodbye, world!");
         demoDao.update(model);
 
-        demoDao.delete(model);
+        //demoDao.delete(model);
+
+        for(DemoModel temp : demoDao.readAll()) {
+            System.out.println(temp);
+        }
 
 
     }
