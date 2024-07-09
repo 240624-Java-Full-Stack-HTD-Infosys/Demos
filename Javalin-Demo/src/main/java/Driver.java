@@ -1,4 +1,5 @@
 import io.javalin.Javalin;
+import io.javalin.http.Cookie;
 
 import java.util.List;
 import java.util.Map;
@@ -61,5 +62,21 @@ public class Driver {
                     }
                 }
         );
+
+
+        api.get("/cookie-test", (ctx)->{
+            Cookie cookie = new Cookie("myCookie", "key1=val1;key2=val2;");
+            ctx.cookie(cookie);
+        });
+
+        api.post("/cookie-test", (ctx)->{
+            String thingVal = ctx.cookie("thing");
+            System.out.println(thingVal);
+
+            Map<String, String> cookieMap = ctx.cookieMap();
+            for(String key : cookieMap.keySet()) {
+                System.out.println("[" + key + "]: " + cookieMap.get(key));
+            }
+        });
     }
 }
