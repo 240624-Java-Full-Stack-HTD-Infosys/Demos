@@ -1,6 +1,8 @@
-
 DROP TABLE IF EXISTS tasks;
 DROP TABLE IF EXISTS users;
+
+drop view name_view
+
 --let's build a one-to-many multiplicity between users and tasks
 CREATE TABLE IF NOT EXISTS users (
 	user_id SERIAL PRIMARY KEY,
@@ -9,6 +11,8 @@ CREATE TABLE IF NOT EXISTS users (
 	username VARCHAR(40) UNIQUE,
 	password VARCHAR(40) NOT NULL
 );
+
+CREATE UNIQUE INDEX users_username ON users (username);
 
 CREATE TABLE tasks (
 	task_id SERIAL PRIMARY KEY,
@@ -20,15 +24,24 @@ CREATE TABLE tasks (
 );
 
 
+CREATE TABLE encrypted_passwords (
+	id SERIAL PRIMARY KEY,
+	username VARCHAR(40),
+	encrypted_password VARCHAR(40),
+	CONSTRAINT fk_encrypted_passwords_users FOREIGN KEY (username) REFERENCES users (username)
+);
+
+insert into encrypted_passwords (username, encrypted_password)
+VALUES('kplummer', 'lsdkafjgndlskfgjnsdldfglksdjfng');
+
+
 select * from users;
 select * from tasks; 
 
 
-select * from users;
-
-INSERT INTO tasks (title, description, completed, user_id) VALUES ('Register my vehicle', 'I need new NY state plates and I need to get an inspection.', false, 1);
-INSERT INTO users (first_name, last_name, username, password) VALUES ('Kyle', 'Plummer', 'kplummer', 'password');
-INSERT INTO users (first_name, last_name, username, password) VALUES ('Chad', 'Fitzgerald', 'bigChad', 'password');
+INSERT INTO tasks (title, description, completed, user_id) VALUES ('Register my vehicle', 'I need new NY state plates and I need to get an inspection.', false, 3);
+INSERT INTO users (first_name, last_name, username, password) VALUES ('asdf', 'asdf', 'asdf', 'password');
+INSERT INTO users (first_name, last_name, username, password) VALUES ('Nileema', 'Shah', 'nshah', 'password');
 
 
 SELECT * 
@@ -37,8 +50,7 @@ FULL OUTER JOIN tasks T ON T.user_id = U.user_id
 
 
 
-
-
+DELETE FROM users WHERE user_id = 3;
 
 
 

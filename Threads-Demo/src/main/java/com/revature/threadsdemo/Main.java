@@ -30,25 +30,22 @@ public class Main {
          */
 
 
-        //These runnables run on the vector
-        Thread first = new Thread(new MyRunnableClass());
-        Thread second = new Thread(new MyRunnableClass());
+//        Thread first = new Thread(new MyRunnableClass());
+//        Thread second = new Thread(new MyRunnableClass());
 
-        //these thread classes run on the list
-        MyThreadClass third = new MyThreadClass();
-        MyThreadClass fourth = new MyThreadClass();
 
-        /*
-        What did we learn? Vectors are thread safe, but the iterators are not.
-        Vectors are implemented with "synchronized" code blocks. There are some operations
-        which are "thread-safe" but we must still be careful about how we implement our
-        solutions.
-         */
+        Iterator<Integer> iter = myList.iterator();
+        Object lock = new Object();
+        SynchronizedClass syncObj = new SynchronizedClass(iter, lock);
+        MyThreadClass sync1 = new MyThreadClass(syncObj);
+        MyThreadClass sync2 = new MyThreadClass(syncObj);
 
-//        first.start();
-//        second.start();
-        third.start();
-        fourth.start();
+        sync1.start();
+        sync2.start();
+
+
+
+
 
 
 
