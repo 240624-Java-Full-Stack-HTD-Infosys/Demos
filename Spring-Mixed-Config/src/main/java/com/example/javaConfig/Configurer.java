@@ -1,6 +1,7 @@
 package com.example.javaConfig;
 
 import com.example.componentScan.MyService;
+import com.example.xmlConfig.MyClass;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;

@@ -9,7 +9,6 @@ public class MyComponent {
     private MyServiceBean service;
     private String message;
 
-    @Autowired
     public MyComponent(MyControllerBean controller, MyServiceBean service) {
         this.message = "";
         this.controller = controller;
@@ -23,6 +22,7 @@ public class MyComponent {
         return controller;
     }
 
+    @Autowired
     public void setController(MyControllerBean controller) {
         this.controller = controller;
     }
@@ -32,6 +32,7 @@ public class MyComponent {
     }
 
 
+    @Autowired
     public void setService(MyServiceBean service) {
         this.service = service;
     }
