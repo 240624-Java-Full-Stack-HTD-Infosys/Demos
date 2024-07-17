@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.*;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 public class DemoController {
@@ -76,14 +78,44 @@ public class DemoController {
         return null;
     }
 
-    @PostMapping("/auth")
+    @PostMapping("/set-cookie")
     @ResponseStatus(HttpStatus.OK)
-    public void login(@RequestBody AuthDto auth, HttpServletResponse resp) {
+    public void generateCookies(@RequestBody AuthDto auth, HttpServletResponse resp) {
         if(auth.getUsername().equals("kplummer") && auth.getPassword().equals("password")) {
-            Cookie cookie = new Cookie("Auth", "Bearer kplummer");
+            Cookie cookie = new Cookie("Key1", "Val1");
+            Cookie cookie2 = new Cookie("Key2", "Val2");
             resp.addCookie(cookie);
+            resp.addCookie(cookie2);
         }
     }
 
+    @GetMapping("/get-cookie")
+    @ResponseStatus(HttpStatus.OK)
+    public Set<String> parseCookies(@CookieValue("Key1") String key1, @CookieValue("Key2") String something, HttpServletRequest req) {
+        Set<String> valueSet = new HashSet<>();
+        valueSet.add(key1);
+        valueSet.add(something);
+
+        Cookie[] cookieArray = req.getCookies();
+        for(Cookie cookie : cookieArray) {
+            valueSet.add(cookie.getValue());
+        }
+
+        return valueSet;
+    }
+
+    @GetMapping("/cause-error")
+    @ResponseStatus(HttpStatus.I_AM_A_TEAPOT)
+    public String causeError() throws Exception {
+        throw new Exception("This is the exception message");
+    }
+
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public String serverError() {
+        //log some debug info
+        //graceful recovery?
+        return "There was a generic server error.";
+    }
 
 }
