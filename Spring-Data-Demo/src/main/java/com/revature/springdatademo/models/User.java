@@ -1,7 +1,12 @@
 package com.revature.springdatademo.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
+
+import java.util.List;
 import java.util.Set;
 
 @Entity(name = "users")
@@ -17,7 +22,7 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column
+    @Column(unique = true)
     private String username;
 
     @Column
@@ -30,8 +35,10 @@ public class User {
     One-to-Many multiplicity is mapped by the "user" field in the other entity.
     Just to be extra confusing, we map by the name of the Java field, not the name of the foreign key column.
      */
-    @OneToMany(mappedBy = "user") //the name of the field in the other entity
-    Set<Task> tasks;
+    @OneToMany(mappedBy = "user") //the name of the field in the other entities
+    @JsonManagedReference
+    List<Task> tasks;
+
 
 
 
@@ -94,14 +101,22 @@ public class User {
         this.password = password;
     }
 
-    /*
-    In this toString we do show the tasks associated. We just need to make sure we don't also
-    show the user value, as we would then have a circular reference. If we did that and ever called
-    toString on either, we would be in an infinite loop.
+    public List<Task> getTasks() {
+        return tasks;
+    }
 
-    I chose to have the User side showing the Tasks because of the one-to-many relation. When displayed
-    a user would show all their tasks, but the tasks won't then also show the user.
-     */
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+    }
+
+    /*
+            In this toString we do show the tasks associated. We just need to make sure we don't also
+            show the user value, as we would then have a circular reference. If we did that and ever called
+            toString on either, we would be in an infinite loop.
+
+            I chose to have the User side showing the Tasks because of the one-to-many relation. When displayed
+            a user would show all their tasks, but the tasks won't then also show the user.
+             */
     @Override
     public String toString() {
         return "User{" +

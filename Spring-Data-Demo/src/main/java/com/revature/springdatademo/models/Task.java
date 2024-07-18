@@ -1,5 +1,6 @@
 package com.revature.springdatademo.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity(name = "tasks")
@@ -21,9 +22,16 @@ public class Task {
      */
     @ManyToOne
     @JoinColumn(name = "user_id")//the name of the foreign key column that will represent this data in the table
+    @JsonBackReference
     private User user;
 
 
+    public Task(String title, String description, Boolean completed, User user) {
+        this.title = title;
+        this.description = description;
+        this.completed = completed;
+        this.user = user;
+    }
 
     public Task(Integer taskId, String title, String description, Boolean completed) {
         this.taskId = taskId;
@@ -36,6 +44,9 @@ public class Task {
         this.title = title;
         this.description = description;
         this.completed = completed;
+    }
+
+    public Task() {
     }
 
     public Integer getTaskId() {
