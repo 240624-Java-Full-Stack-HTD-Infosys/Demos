@@ -2,12 +2,14 @@ package com.revature.springdatademo.models;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
 
 
 import java.util.List;
-import java.util.Set;
+
 
 @Entity(name = "users")
 public class User {
@@ -22,7 +24,9 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
+    @Length(min = 6, max = 20)
+    @Pattern(regexp = "^[A-Za-z0-9]{6,20}$")
     private String username;
 
     @Column
