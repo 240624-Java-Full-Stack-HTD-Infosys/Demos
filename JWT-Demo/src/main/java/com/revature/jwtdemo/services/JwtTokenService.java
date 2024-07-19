@@ -24,7 +24,7 @@ public class JwtTokenService {
     @Autowired//autowiring an environment bean, a way to access a .properties file in Spring
     public JwtTokenService(Environment environment) {
         this.environment = environment;//this thing will contain properties from application.properties
-        String encodedKey = this.environment.getProperty("jwt-secret-key");
+        String encodedKey = this.environment.getProperty("SECRET_KEY");
         this.decodedKey = Keys.hmacShaKeyFor(Decoders.BASE64.decode(encodedKey));
     }
 
@@ -32,7 +32,7 @@ public class JwtTokenService {
     public String generateToken(Map<String, String> claims) {
         JwtBuilder builder = Jwts.builder()
                 .issuer("revature")
-                .subject("authentication")
+                .subject("Authentication")
                 .issuedAt(Date.from(Instant.now()))
                 .expiration(Date.from(Instant.now().plus(Duration.ofDays(7))));
 
@@ -56,7 +56,8 @@ public class JwtTokenService {
 
     public boolean validateAuthentication(String bearerToken) {
         Jws<Claims> claims = this.parseToken(bearerToken);
-        return claims.getPayload().get("username").equals(environment.getProperty("username"));
+
+        return claims.getPayload().get("username").equals(environment.getProperty("AUTH_USERNAME"));
 
     }
 

@@ -36,7 +36,7 @@ public class SpringDataDemoApplication {
 		UserRepository userRepo = ac.getBean(UserRepository.class);
 		TaskRepository taskRepo = ac.getBean(TaskRepository.class);
 		MyService service = ac.getBean(MyService.class);
-		User user = new User("Kyle", "Plummer", "kplu", "password");
+		User user = new User("Kyle", "Plummer", "kplummer", "password");
 
 		List<Task> taskList = new ArrayList<>();
 		taskList.add(new Task("walk the dog", "Take the dog for a long walk, he's earned it.", false, user));
