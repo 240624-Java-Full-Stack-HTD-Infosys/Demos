@@ -4,6 +4,7 @@ import com.revature.demo.components.MyComponent;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Repository;
 
 @SpringBootApplication(scanBasePackages = {"com.revature.demo.components"})
 public class SpringComponentScanningDemoApplication {
@@ -13,6 +14,10 @@ public class SpringComponentScanningDemoApplication {
 
 		MyComponent mc = ac.getBean(MyComponent.class);
 		mc.test();
+
+
+
+
 	}
 
 }

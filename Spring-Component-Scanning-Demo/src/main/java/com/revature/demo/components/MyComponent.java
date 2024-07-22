@@ -1,16 +1,17 @@
 package com.revature.demo.components;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("MyComponent")
 public class MyComponent {
     private MyControllerBean controller;
     private MyServiceBean service;
     private String message;
 
-    public MyComponent(MyControllerBean controller, MyServiceBean service) {
-        this.message = "";
+    public MyComponent(@Value("MyMessage") String message, MyControllerBean controller, MyServiceBean service) {
+        this.message = message;
         this.controller = controller;
         this.service = service;
     }

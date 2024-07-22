@@ -10,6 +10,7 @@ import org.hibernate.Session;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -44,6 +45,12 @@ public class SpringDataDemoApplication {
 		taskList.add(new Task("car inspection", "take the car to Gill's for an inspection and oil change", false, user));
 
 		user.setTasks(taskList);
+
+		//create list
+		//for loop
+			//create object
+			//store object in list
+		//loop block ends and object goes out of scope, but list is still in scope
 
 
 		System.out.println("\n\nBefore: " + user);
