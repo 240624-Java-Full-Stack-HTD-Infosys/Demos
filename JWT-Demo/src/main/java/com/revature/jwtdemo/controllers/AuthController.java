@@ -7,6 +7,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,6 +32,7 @@ public class AuthController {
     }
 
     @PostMapping("/authenticate")
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     public String login(@RequestBody AuthDto authDto, HttpServletResponse response) {
         String username = environment.getProperty("AUTH_USERNAME");
@@ -46,11 +48,12 @@ public class AuthController {
         } else {
             throw new AuthException("Bad username or password.");
         }
-        return "Authenticated.";
+        return "{\"response\":\"Authenticated.\"}";
     }
 
     @ExceptionHandler(AuthException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
     public String authExceptionHandler(AuthException e) {
-        return "Bad username or password.";
+        return "{\"response\":\"Bad username or password.\"}";
     }
 }

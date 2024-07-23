@@ -2,9 +2,7 @@
 //classes weren't part of the language
 //we just built 'bare objects'
 
-let myParentObject = {
-    parent: "Me"
-}
+
 
 let myObject = {//inside the block is just JSON!!
     "name":"value",
@@ -18,9 +16,17 @@ let myObject = {//inside the block is just JSON!!
     }
 };
 
+let myParentObject = {
+    parent: "Me",
+    parentFunction: function() {
+        console.log("This is in the parent")
+    }
+}
+
 delete myObject.name2;
 myObject.somethingNew = "This didn't exist before right here";
 myObject.__proto__=myParentObject;//set up the proto chain
+myObject.parentFunction();
 
 let sum = myObject.myFunction(2,5);
 console.log(sum)
