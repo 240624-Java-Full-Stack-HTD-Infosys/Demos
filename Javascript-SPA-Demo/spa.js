@@ -1,16 +1,22 @@
+//set up these variables to hold data later
 let usernameValue = "";
 let passwordValue = "";
 
+//get the body element. We will use this for the DOM manipulation
 let bodyElement = document.getElementById("body");
-let loginView = document.createElement("div");
+
+//This is the HTML we add into the DOM for the "login" view. 
+let loginView = document.createElement('div');
 loginView.innerHTML =
-`<label>username: </label>
+`
+<label>username: </label>
 <input type="text" id="username"></input>
 <br>
 <label>password: </label>
 <input type="password" id="password"></input>
 <br>
-<button id="submitButton" onclick="submit()">Submit</button>`
+<button id="submitButton" onclick="submit()">Submit</button>
+`
 
 
 
