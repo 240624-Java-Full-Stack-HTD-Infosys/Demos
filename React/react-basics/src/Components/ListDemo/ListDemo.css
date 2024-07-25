@@ -1,0 +1,11 @@
+.name-div{
+    background-color: cadetblue;
+}
+
+.firstName-div{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.lastName-div{
+    font-weight: bolder;
+}
