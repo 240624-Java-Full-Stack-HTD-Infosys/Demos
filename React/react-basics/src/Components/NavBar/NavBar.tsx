@@ -22,7 +22,7 @@ function NavBar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/">
+              <Link className="nav-link" aria-current="page" to="/">
                 Home
               </Link>
             </li>
@@ -39,6 +39,31 @@ function NavBar() {
             <li className="nav-item">
               <Link className="nav-link" to="/props">
                 Props
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/class">
+                Class
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/hooks">
+                Hooks
+              </Link>
+            </li>           
+            <li className="nav-item">
+              <Link className="nav-link" to="/lift">
+                Lifting State
+              </Link>
+            </li>           
+            <li className="nav-item">
+              <Link className="nav-link" to="/context">
+                Context
+              </Link>
+            </li>           
+            <li className="nav-item">
+              <Link className="nav-link" to="/solutions">
+                Solutions
               </Link>
             </li>
           </ul>
