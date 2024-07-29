@@ -15,6 +15,9 @@ import ClassComponent from './Components/ClassComponent/ClassComponent';
 
 import {Parent as ParentState} from './Components/LiftingState/Parent/Parent';
 import ContextExample from './Components/Context/ContextExample';
+import Counter from './Testing/Counter/Counter';
+import Greeting from './Testing/Greeting/Greeting';
+import Async from './Testing/Async/Async';
 
 function App() {
   return (
@@ -25,6 +28,7 @@ function App() {
       {/* <ListDemo/> */}
       {/* <Parent/> */}
 
+    <Async/>
       <Routes>
         <Route path="/" element={<ComponentOne/>}></Route>
         <Route path='/events' element={<EventsDemo/>}></Route>

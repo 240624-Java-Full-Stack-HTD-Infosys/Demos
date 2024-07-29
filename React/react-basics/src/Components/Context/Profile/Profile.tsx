@@ -6,7 +6,8 @@ interface ProfileProps{
     // user: User;
 }
 function Profile({}:ProfileProps) {
-    const user: User | undefined = useContext(DashboardContext)
+    const {user, setUser} : any | undefined = useContext(DashboardContext)
+    
   return (
     <div>
         {/* {user ? user.name : <></>} */}

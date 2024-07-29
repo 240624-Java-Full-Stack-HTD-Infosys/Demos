@@ -6,7 +6,8 @@ interface SidebarProps {
     // user: User;
 }
 function Sidebar({}: SidebarProps) {
-    const user : User | undefined = useContext(DashboardContext);
+    const {user, setUser} : any | undefined = useContext(DashboardContext);
+    
   return (
     <div>{user && user.email}</div>
   )

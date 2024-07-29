@@ -16,7 +16,7 @@ function ContextExample() {
 
   return (
     <div>
-        <DashboardContext.Provider value={user}>
+        <DashboardContext.Provider value={{user, setUser}}>
             <Dashboard/>
         </DashboardContext.Provider>
     </div>
