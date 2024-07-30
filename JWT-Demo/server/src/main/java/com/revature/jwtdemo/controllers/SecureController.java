@@ -5,10 +5,7 @@ import com.revature.jwtdemo.services.JwtTokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * This controller exposes endpoints which are only valid for
@@ -28,6 +25,10 @@ public class SecureController {
 
     @GetMapping("/secret")
     @ResponseStatus(HttpStatus.OK)
+    @CrossOrigin(
+            origins = {"http://localhost:4200"},
+            allowCredentials = "true"
+    )
     public String getSecretWord(@CookieValue("Authentication") String bearerToken) {
         if(tokenService.validateAuthentication(bearerToken)) {
             return env.getProperty("SECRET_WORD");

@@ -1,0 +1,12 @@
+<h1>Login:</h1>
+<label>username: </label>
+<input type="text" (input)="updateUsername($event)">
+<br>
+<label>password:</label>
+<input type="password" (input)="updatePassword($event)">
+<br>
+<button (click)="doLogin()">Login</button>
+<hr>
+<label>Test with cookie: </label>
+<br>
+<button (click)="doCookieTest()">Test!</button>

@@ -18,13 +18,12 @@ public class User {
     @Column
     private String password;
 
-    @Column(name = "user_following")
     @ManyToMany
     @JsonBackReference
     @JoinTable(
-            name = "follower_junction",
-            joinColumns = @JoinColumn(name = "\"user_who_is_doing_the_following_of_someone_else\""),
-            inverseJoinColumns = @JoinColumn(name = "this_user_is_following_the_listed_id")
+            name = "users_followers",
+            joinColumns = @JoinColumn(name = "\"user\""),
+            inverseJoinColumns = @JoinColumn(name = "following")
     )
     private List<User> following;//this is our user following many other users
 

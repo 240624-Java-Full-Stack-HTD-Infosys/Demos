@@ -32,7 +32,10 @@ public class AuthController {
     }
 
     @PostMapping("/authenticate")
-    @CrossOrigin
+    @CrossOrigin(
+            origins = {"http://localhost:4200"},
+            allowCredentials = "true"
+    )
     @ResponseStatus(HttpStatus.OK)
     public String login(@RequestBody AuthDto authDto, HttpServletResponse response) {
         String username = environment.getProperty("AUTH_USERNAME");

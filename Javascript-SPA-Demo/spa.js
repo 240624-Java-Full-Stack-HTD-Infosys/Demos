@@ -39,7 +39,7 @@ async function submit() {
     let responseBody = await response.json();
     console.log(response);
     console.log(responseBody);
-    console.log(response.status)
+    console.log(response.status);
 
 
     if(response.status == 200) {
