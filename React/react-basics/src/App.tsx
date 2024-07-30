@@ -7,6 +7,17 @@ import ListDemo from './Components/ListDemo/ListDemo';
 import Parent from './Components/Props/ParentComponent/Parent';
 import { Route, Routes } from 'react-router-dom';
 import NavBar from './Components/NavBar/NavBar';
+import ExerciseOne from './Solutions/ExerciseOne/ExerciseOne';
+import ExerciseTwo from './Solutions/ExerciseTwo/ExerciseTwo';
+import Solutions from './Solutions/Solutions';
+import Hooks from './Components/Hooks/Hooks';
+import ClassComponent from './Components/ClassComponent/ClassComponent';
+
+import {Parent as ParentState} from './Components/LiftingState/Parent/Parent';
+import ContextExample from './Components/Context/ContextExample';
+import Counter from './Testing/Counter/Counter';
+import Greeting from './Testing/Greeting/Greeting';
+import Async from './Testing/Async/Async';
 
 function App() {
   return (
@@ -17,11 +28,17 @@ function App() {
       {/* <ListDemo/> */}
       {/* <Parent/> */}
 
+    <Async/>
       <Routes>
         <Route path="/" element={<ComponentOne/>}></Route>
         <Route path='/events' element={<EventsDemo/>}></Route>
         <Route path='/lists' element={<ListDemo/>}></Route>
         <Route path='/props' element={<Parent/>}></Route>
+        <Route path='/hooks' element={<Hooks/>}></Route>
+        <Route path='/class' element={<ClassComponent/>}></Route>
+        <Route path='/lift' element={<ParentState/>}></Route>
+        <Route path='/context' element={<ContextExample/>}></Route>
+        <Route path='/solutions' element={<Solutions/>}></Route>
       </Routes>
     </div>
   );
